@@ -1,0 +1,44 @@
+---
+type: policy
+name: golang-example-policy
+description: Policy to trigger golang-example
+template: golang-example
+parameters:
+notifications:
+  -
+    when:
+      - on_start
+      - on_success
+      - on_failure
+      - on_change
+    whom:
+      - committer
+      - author
+      - hong@applatix.com
+  -
+    when:
+      - on_change
+    whom:
+      - abc@company.slack.com
+when:
+  -
+    event: on_push
+    target_branches:
+      - ".*"
+  -
+    event: on_pull_request
+    target_branches:
+      - ".*"
+  -
+    event: on_pull_request_merge
+    target_branches:
+      - ".*"
+  -
+    event: on_cron
+    target_branches:
+      - ".*"
+    schedule: "*/1 * * * *"
+    timezone: "US/Pacific"
+labels:
+  milestone: test
+  version: 1.0.1

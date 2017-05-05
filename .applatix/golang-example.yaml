@@ -1,6 +1,5 @@
 ---
-type: service_template
-subtype: container
+type: container
 name: golang-example-base
 description: golang example base container
 container:
@@ -24,8 +23,7 @@ outputs:
       path: "/src"
 
 ---
-type: service_template
-subtype: workflow
+type: workflow
 name: golang-example
 description: golang example workflow
 inputs:
